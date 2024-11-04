@@ -1,0 +1,16 @@
+## Interface: 110002, 40400
+## Title: CharacterPanelUpgradeTrack
+## Notes: Just adds a letter to the item icon in the character panel to indicate the upgrade track
+## Version: 1.0.0
+## Author: ZodiakBG	
+
+libs/debug.lua
+
+libs/itemslots.lua
+
+libs/tooltip.lua
+libs/ui.lua
+
+libs/equipment.lua
+libs/events.lua
+CharacterPanelUpgradeTrack.lua
