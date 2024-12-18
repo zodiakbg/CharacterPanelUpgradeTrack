@@ -40,8 +40,6 @@ end
 
 function addon.ui.UpdateCharacterPanelItemSlot(slot, text, color)
     local slotName = addon.CHARATER_PANEL_ITEM_SLOTS_MAPPING[slot]
-    addon.debug("updating frame for slot: [" .. slotName .. "-" .. slot .. "] with text: [" .. text .. "]")
-
     local slotFrame = _G[slotName]
     if slotFrame and slotFrame:IsShown() then
         CreateItemTextOverlay(slot, slotFrame, text, color)
