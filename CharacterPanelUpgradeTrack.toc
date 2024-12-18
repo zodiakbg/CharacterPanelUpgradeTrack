@@ -6,13 +6,13 @@
 
 localization.lua
 
-libs/debug.lua
+utils/debug.lua
 
-libs/itemslots.lua
+utils/itemslots.lua
 
-libs/tooltip.lua
-libs/ui.lua
+utils/tooltip.lua
+utils/ui.lua
 
-libs/equipment.lua
-libs/events.lua
+utils/equipment.lua
+utils/events.lua
 CharacterPanelUpgradeTrack.lua
