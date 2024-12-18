@@ -34,7 +34,7 @@ addon.strings.UPGRADE_TRACKS.deDE = {
     ["Veteran"] = "Vet",
     ["Champion"] = "Cha",
     ["Held"] = "Hero",
-    ["Mythisch"] = "Myth"
+    ["Mythos"] = "Myth"
 };
 addon.strings.UPGRADE_TRACKS.esES = {
     ["Explorador"] = "Exp",
