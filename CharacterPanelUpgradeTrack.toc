@@ -1,6 +1,6 @@
-## Interface: 110002, 40400
+## Interface: 110005, 110007, 110002
 ## Title: CharacterPanelUpgradeTrack
-## Notes: Just adds a letter to the item icon in the character panel to indicate the upgrade track
+## Notes: Just adds a text to the item icon in the character panel to indicate the upgrade track
 ## Version: 1.0.0
 ## Author: ZodiakBG	
 
