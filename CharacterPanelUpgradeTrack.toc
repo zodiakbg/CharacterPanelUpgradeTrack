@@ -4,6 +4,8 @@
 ## Version: 1.0.0
 ## Author: ZodiakBG	
 
+localization.lua
+
 libs/debug.lua
 
 libs/itemslots.lua

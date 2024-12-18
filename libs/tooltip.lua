@@ -2,16 +2,15 @@ local addonName, addon = ...
 
 addon.tooltip = {}
 
-local UPGRADE_LEVEL_STRING = "Upgrade Level: "
+local locale = GetLocale();
+if not locale then 
+    locale = "enUS"
+end
 
-local UPGRADE_TRACKS = {
-    Explorer = "Exp",
-    Adventurer = "Adv",
-    Veteran = "Vet",
-    Champion = "Cha",
-    Hero = "Hero",
-    Myth = "Myth"
-}
+if not addon.strings.UPGRADE_LEVEL_STRING[locale] then
+    print("Unsupported locale: " .. locale .. ". Addon [CharacterPanelUpgradeTrack] disabled.")
+    return -- Gracefully stop the addon
+end
 
 function startsWith(str, prefix)
     return string.sub(str, 1, string.len(prefix)) == prefix
@@ -19,7 +18,7 @@ end
 
 local function findUpgradeLevelLine(lines)
     for _, line in ipairs(lines) do
-        if line.leftText and startsWith(line.leftText, UPGRADE_LEVEL_STRING) then
+        if line.leftText and startsWith(line.leftText, addon.strings.UPGRADE_LEVEL_STRING[locale]) then
             return line
         end
     end
@@ -38,11 +37,11 @@ function addon.tooltip.ExtractUpgradeTrackInfoFromTooltip(data)
         return
     end
 
-    local upgradeTrackAndLevelStr = string.gsub(line.leftText, UPGRADE_LEVEL_STRING, "")
+    local upgradeTrackAndLevelStr = string.gsub(line.leftText, addon.strings.UPGRADE_LEVEL_STRING[locale], "")
     local upgradeTrackStr = string.sub(upgradeTrackAndLevelStr, 1, -5)
 
     return {
-        upgradeTrackStr = UPGRADE_TRACKS[upgradeTrackStr],
+        upgradeTrackStr = addon.strings.UPGRADE_TRACKS[locale][upgradeTrackStr],
         color = {
             r = data.lines[1].leftColor.r,
             g = data.lines[1].leftColor.g,
