@@ -10,6 +10,15 @@ addon.strings.UPGRADE_LEVEL_STRING.esES = "Nivel de mejora: ";
 addon.strings.UPGRADE_LEVEL_STRING.itIT = "Livello di potenziamento: ";
 addon.strings.UPGRADE_LEVEL_STRING.ptBR = "Nível de aprimoramento: ";
 
+addon.strings.SEASON_1 = {};
+addon.strings.SEASON_1.enUS = "Season 1";
+addon.strings.SEASON_1.frFR = "Saison 1";
+addon.strings.SEASON_1.deDE = "Saison 1";
+addon.strings.SEASON_1.esES = "Temporada 1";
+addon.strings.SEASON_1.itIT = "Stagione 1";
+addon.strings.SEASON_1.ptBR = "Série 1";
+
+
 
 addon.strings.UPGRADE_TRACKS = {}
 addon.strings.UPGRADE_TRACKS.enUS = {
