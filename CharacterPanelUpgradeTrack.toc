@@ -1,4 +1,4 @@
-# Interface: 110107
+## Interface: 110107
 ## Version: 2.0.0
 ## Title: CharacterPanelUpgradeTrack
 ## Notes: Displays items upgrade track and ilevel on character panel
