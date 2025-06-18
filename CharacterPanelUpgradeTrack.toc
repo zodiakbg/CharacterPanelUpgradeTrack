@@ -1,7 +1,18 @@
-# Interface: 110105
-## Version: 1.0.0
-## Title: Alegro
+# Interface: 110107
+## Version: 2.0.0
+## Title: CharacterPanelUpgradeTrack
 ## Notes: Displays items upgrade track and ilevel on character panel
+## Category-enUS: User Interface
+## Category-deDE: Benutzerinterface
+## Category-esES: Interfaz de usuario
+## Category-esMX: Interfaz de usuario
+## Category-frFR: Interface utilisateur
+## Category-itIT: Interfaccia utente
+## Category-koKR: 사용자 인터페이스
+## Category-ptBR: Interface do usuário
+## Category-ruRU: Интерфейс пользователя
+## Category-zhCN: 用户界面
+## Category-zhTW: 使用者介面
 ## Author: Alex Stoev
 ## SavedVariables: CPUTSettings
 ## OptionalDeps: Ace3
