@@ -116,8 +116,8 @@ function CPUT.settings:CreateBlizzOptions()
             grayOutPrevSeasons = {
                 order = 31,
                 type = "toggle",
-                name = "Gray out previous seasons' items",
-                desc = "If checked previous seasons' items will be grayed out",
+                name = "Gray out previous seasons' and low level items",
+                desc = "If checked all items that do not upgrade track will be will be grayed out",
                 get = GetProfileOption,
                 set = SetProfileOption
             }

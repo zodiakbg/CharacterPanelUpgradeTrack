@@ -43,6 +43,14 @@ SEASON_1.esES = "Temporada 1";
 SEASON_1.itIT = "Stagione 1";
 SEASON_1.ptBR = "Série 1";
 
+local RESHII_WRAPS = {};
+RESHII_WRAPS.enUS = "Reshii Wraps";
+RESHII_WRAPS.frFR = "Reshii Wraps";
+RESHII_WRAPS.deDE = "Reshii Wraps";
+RESHII_WRAPS.esES = "Reshii Wraps";
+RESHII_WRAPS.itIT = "Reshii Wraps";
+RESHII_WRAPS.ptBR = "Reshii Wraps";
+
 local UPGRADE_TRACKS = {}
 UPGRADE_TRACKS.enUS = {
     ["Explorer"] = "Exp",
@@ -111,6 +119,10 @@ end
 
 function CPUT.Constants:getSeasonString(locale)
     return SEASON_1[locale]
+end
+
+function CPUT.Constants:getReshiiWraps(locale)
+    return RESHII_WRAPS[locale]
 end
 
 function CPUT.Constants:getUpgradeTrackAbbr(locale, track)

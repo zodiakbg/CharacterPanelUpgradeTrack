@@ -39,6 +39,9 @@ function CPUT.CPUTUtils:FetchItemSlotData(slot)
     -- get last season string
     slotData.lsString = self:GetTooltipString(tooltipData, CPUT.Constants:getSeasonString(locale))
 
+    -- get reshii wraps string
+    slotData.rwString = self:GetTooltipString(tooltipData, CPUT.Constants:getReshiiWraps(locale), true)
+
     slotData.color = {
         r = tooltipData.lines[1].leftColor.r,
         g = tooltipData.lines[1].leftColor.g,
@@ -46,7 +49,7 @@ function CPUT.CPUTUtils:FetchItemSlotData(slot)
     }
 
     if CPUT.settings:GetSettingsValue("grayOutPrevSeasons") then
-        if slotData.lsString then
+        if slotData.lsString or (slotData.utString == nil and slotData.rwString == nil) then
             slotData.color = {
                 r = 0.5,
                 g = 0.5,
@@ -55,13 +58,20 @@ function CPUT.CPUTUtils:FetchItemSlotData(slot)
         end
     end
 
+    if slotData.utString == nil and slotData.rwString ~= nil then
+        slotData.utString = slotData.rwString:match("^(.-) ")
+    end
+
     return slotData
 end
 
-function CPUT.CPUTUtils:GetTooltipString(tooltipData, str)
+function CPUT.CPUTUtils:GetTooltipString(tooltipData, str, fullString)
     local line = self:findLine(tooltipData.lines, str)
     if not line then
         return
+    end
+    if fullString then
+        return line.leftText
     end
     return string.gsub(line.leftText, str, "")
 end
