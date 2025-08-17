@@ -4,66 +4,82 @@ local slots = {}
 
 slots[1] = {
     name = "CharacterHeadSlot",
+    inspectName = "InspectHeadSlot",
     besidePosition = "right"
 }
 slots[2] = {
     name = "CharacterNeckSlot",
+    inspectName = "InspectNeckSlot",
     besidePosition = "right"
 }
 slots[3] = {
     name = "CharacterShoulderSlot",
+    inspectName = "InspectShoulderSlot",
     besidePosition = "right"
 }
 slots[5] = {
     name = "CharacterChestSlot",
+    inspectName = "InspectChestSlot",
     besidePosition = "right"
 }
 slots[6] = {
     name = "CharacterWaistSlot",
+    inspectName = "InspectWaistSlot",
     besidePosition = "left"
 }
 slots[7] = {
     name = "CharacterLegsSlot",
+    inspectName = "InspectLegsSlot",
     besidePosition = "left"
 }
 slots[8] = {
     name = "CharacterFeetSlot",
+    inspectName = "InspectFeetSlot",
     besidePosition = "left"
 }
 slots[9] = {
     name = "CharacterWristSlot",
+    inspectName = "InspectWristSlot",
     besidePosition = "right"
 }
 slots[10] = {
     name = "CharacterHandsSlot",
+    inspectName = "InspectHandsSlot",
     besidePosition = "left"
 }
 slots[11] = {
     name = "CharacterFinger0Slot",
+    inspectName = "InspectFinger0Slot",
     besidePosition = "left"
 }
 slots[12] = {
     name = "CharacterFinger1Slot",
+    inspectName = "InspectFinger1Slot",
     besidePosition = "left"
 }
 slots[13] = {
     name = "CharacterTrinket0Slot",
+    inspectName = "InspectTrinket0Slot",
     besidePosition = "left"
 }
 slots[14] = {
     name = "CharacterTrinket1Slot",
+    inspectName = "InspectTrinket1Slot",
     besidePosition = "left"
 }
 slots[15] = {
     name = "CharacterBackSlot",
+    inspectName = "InspectBackSlot",
     besidePosition = "right"
 }
 slots[16] = {
     name = "CharacterMainHandSlot",
+    inspectName = "InspectMainHandSlot",
     besidePosition = "left"
 }
 slots[17] = {
     name = "CharacterSecondaryHandSlot",
+    inspectName = "InspectSecondaryHandSlot",
     besidePosition = "right"
 }
 

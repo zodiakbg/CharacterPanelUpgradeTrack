@@ -9,14 +9,15 @@ function CPUT.CPUTUtils:ContainsString(str, substr)
     return string.find(str, substr) ~= nil
 end
 
-function CPUT.CPUTUtils:FetchItemSlotData(slotNumber)
+function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
 
     local slotData = {}
     slotData.slot = slotNumber
     slotData.slotName = CPUT.Constants:getEquipmentSlot(slotNumber).name
+    slotData.slotInspectName = CPUT.Constants:getEquipmentSlot(slotNumber).inspectName
     slotData.besidePosition = CPUT.Constants:getEquipmentSlot(slotNumber).besidePosition
 
-    local tooltipData = C_TooltipInfo.GetInventoryItem("player", slotNumber)
+    local tooltipData = C_TooltipInfo.GetInventoryItem(unit, slotNumber)
     if not tooltipData then
         return
     end

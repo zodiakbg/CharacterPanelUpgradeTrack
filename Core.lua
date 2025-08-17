@@ -9,6 +9,9 @@ end
 function CPUT:OnEnable()
     CharacterFrame:HookScript("OnShow", CPUT.UpdateEquipmentSlots)
     self:RegisterEvent("PLAYER_EQUIPMENT_CHANGED")
+    if CPUT.settings:GetSettingsValue("showOnInspect") then
+        self:RegisterEvent("INSPECT_READY", CPUT.UpdateInspectPanel)
+    end
 end
 
 function CPUT:PLAYER_EQUIPMENT_CHANGED()
@@ -20,6 +23,14 @@ function CPUT:UpdateEquipmentSlots()
     CPUT.CPUTUI:ClearItemSlots()
     local slotData = {}
     for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
-        CPUT.CPUTUI:UpdateSlot(slot, slotData)
+        CPUT.CPUTUI:UpdateSlot(slot, slotData, "player")
+    end
+end
+
+function CPUT:UpdateInspectPanel()
+    CPUT.CPUTUI:ClearItemSlots()
+    local slotData = {}
+    for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
+        CPUT.CPUTUI:UpdateSlot(slot, slotData, "target")
     end
 end
