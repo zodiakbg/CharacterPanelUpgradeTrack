@@ -121,28 +121,34 @@ function CPUT.CPUTUI:ShowInspectItemLevel(itemLevel)
 
 end
 
-function CPUT.CPUTUI:ClearItemSlots()
+function CPUT.CPUTUI:ClearItemSlots(unit)
     for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
-        if (overlayTexts.player.il[slot]) then
-            overlayTexts.player.il[slot]:Hide()
-            overlayTexts.player.il[slot] = nil
+        if (unit == "player") then
+            if (overlayTexts.player.ut[slot]) then
+                overlayTexts.player.ut[slot]:Hide()
+                overlayTexts.player.ut[slot] = nil
+            end
+            if (overlayTexts.player.il[slot]) then
+                overlayTexts.player.il[slot]:Hide()
+                overlayTexts.player.il[slot] = nil
+            end
         end
-        if (overlayTexts.player.ut[slot]) then
-            overlayTexts.player.ut[slot]:Hide()
-            overlayTexts.player.ut[slot] = nil
-        end
-        if (overlayTexts.target.il[slot]) then
-            overlayTexts.target.il[slot]:Hide()
-            overlayTexts.target.il[slot] = nil
-        end
-        if (overlayTexts.target.ut[slot]) then
-            overlayTexts.target.ut[slot]:Hide()
-            overlayTexts.target.ut[slot] = nil
+        if (unit == "target") then
+            if (overlayTexts.target.il[slot]) then
+                overlayTexts.target.il[slot]:Hide()
+                overlayTexts.target.il[slot] = nil
+            end
+            if (overlayTexts.target.ut[slot]) then
+                overlayTexts.target.ut[slot]:Hide()
+                overlayTexts.target.ut[slot] = nil
+            end
         end
     end
-    if (overlayTexts.target.itemLevel) then
-        overlayTexts.target.itemLevel:Hide()
-        overlayTexts.target.itemLevel = nil
+    if (unit == "target") then
+        if (overlayTexts.target.itemLevel) then
+            overlayTexts.target.itemLevel:Hide()
+            overlayTexts.target.itemLevel = nil
+        end
     end
 
 end

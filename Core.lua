@@ -20,7 +20,7 @@ function CPUT:PLAYER_EQUIPMENT_CHANGED()
 end
 
 function CPUT:UpdateEquipmentSlots()
-    CPUT.CPUTUI:ClearItemSlots()
+    CPUT.CPUTUI:ClearItemSlots("player")
     local slotData = {}
     for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
         CPUT.CPUTUI:UpdateSlot(slot, slotData, "player")
@@ -28,7 +28,7 @@ function CPUT:UpdateEquipmentSlots()
 end
 
 function CPUT:UpdateInspectPanel()
-    CPUT.CPUTUI:ClearItemSlots()
+    CPUT.CPUTUI:ClearItemSlots("target")
     local slotData = {}
     for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
         CPUT.CPUTUI:UpdateSlot(slot, slotData, "target")
