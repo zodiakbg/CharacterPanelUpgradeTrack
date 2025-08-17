@@ -33,4 +33,5 @@ Core.lua
 Config.lua
 
 CPUT-Core/Constants.lua
+CPUT-Core/UI.lua
 CPUT-Core/Utils.lua

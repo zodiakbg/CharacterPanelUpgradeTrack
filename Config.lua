@@ -120,7 +120,24 @@ function CPUT.settings:CreateBlizzOptions()
                 desc = "If checked all items that do not upgrade track will be will be grayed out",
                 get = GetProfileOption,
                 set = SetProfileOption
+            },
+            showOnInspect = {
+                order = 31,
+                type = "toggle",
+                name = "Show on Inspect",
+                desc = "If checked the inspect panel will be enhanced",
+                get = GetProfileOption,
+                set = SetProfileOption
+            },
+            showInfoBesideIcon = {
+                order = 31,
+                type = "toggle",
+                name = "Show info beside icon",
+                desc = "If checked the info will be shown beside the icon instead of on top",
+                get = GetProfileOption,
+                set = SetProfileOption
             }
+
         }
 
     }

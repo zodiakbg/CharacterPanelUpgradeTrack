@@ -17,9 +17,9 @@ function CPUT:PLAYER_EQUIPMENT_CHANGED()
 end
 
 function CPUT:UpdateEquipmentSlots()
-    CPUT.CPUTUtils:ClearItemSlots()
+    CPUT.CPUTUI:ClearItemSlots()
     local slotData = {}
-    for slot, slotName in pairs(CPUT.Constants:getEquipmentSlots()) do
-        CPUT.CPUTUtils:UpdateSlot(slot, slotData)
+    for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
+        CPUT.CPUTUI:UpdateSlot(slot, slotData)
     end
 end
