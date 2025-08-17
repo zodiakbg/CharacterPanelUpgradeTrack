@@ -238,12 +238,12 @@ function setBackgroundSlot(slotData)
     f.tex:SetColorTexture(1, 1, 1, 1)
 
     if slotData.besidePosition == "left" then
-        local startColor = CreateColor(0, 0, 0, 0.2)
-        local endColor = CreateColor(0.3, 0.3, 0.3, 1)
+        local startColor = CreateColor(0.1, 0.1, 0.1, 0.2)
+        local endColor = CreateColor(0.1, 0.1, 0.1, 1)
         f.tex:SetGradient("HORIZONTAL", startColor, endColor)
         f:SetPoint("TOPRIGHT", slotFrame, "TOPLEFT", -10, 0)
     else
-        local startColor = CreateColor(0.4, 0.4, 0.4, 1)
+        local startColor = CreateColor(0.1, 0.1, 0.1, 1)
         local endColor = CreateColor(0, 0, 0, 0.2)
         f.tex:SetGradient("HORIZONTAL", startColor, endColor)
         f:SetPoint("TOPLEFT", slotFrame, "TOPRIGHT", 10, 0)
