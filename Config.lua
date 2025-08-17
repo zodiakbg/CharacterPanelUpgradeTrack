@@ -129,8 +129,16 @@ function CPUT.settings:CreateBlizzOptions()
                 get = GetProfileOption,
                 set = SetProfileOption
             },
-            showOnInspect = {
+            showEnchants = {
                 order = 33,
+                type = "toggle",
+                name = "Show enchants",
+                desc = "If checked the enchant info will be shown",
+                get = GetProfileOption,
+                set = SetProfileOption
+            },
+            showOnInspect = {
+                order = 34,
                 type = "toggle",
                 name = "Show on inspect",
                 desc = "If checked the inspect panel will be enhanced",
@@ -138,7 +146,7 @@ function CPUT.settings:CreateBlizzOptions()
                 set = SetProfileOption
             },
             showAvgIlvlOnInspect = {
-                order = 34,
+                order = 35,
                 type = "toggle",
                 name = "Show average item level on Inspect",
                 desc = "If checked the inspect panel will show the average item level",

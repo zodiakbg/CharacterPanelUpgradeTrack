@@ -37,6 +37,9 @@ function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
     -- get reshii wraps string
     slotData.rwString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getReshiiWraps(locale), true))
 
+    -- get enchanted string
+    slotData.enchantedString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getEnchantedString(locale)))
+
     slotData.color = {
         r = tooltipData.lines[1].leftColor.r,
         g = tooltipData.lines[1].leftColor.g,

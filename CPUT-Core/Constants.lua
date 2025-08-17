@@ -91,6 +91,14 @@ UPGRADE_LEVEL_STRING.esES = "Nivel de mejora: ";
 UPGRADE_LEVEL_STRING.itIT = "Livello di potenziamento: ";
 UPGRADE_LEVEL_STRING.ptBR = "Nível de aprimoramento: ";
 
+local ENCHANTED_STRING = {};
+ENCHANTED_STRING.enUS = "Enchanted: ";
+ENCHANTED_STRING.frFR = "Enchanted: ";
+ENCHANTED_STRING.deDE = "Enchanted: ";
+ENCHANTED_STRING.esES = "Enchanted: ";
+ENCHANTED_STRING.itIT = "Enchanted: ";
+ENCHANTED_STRING.ptBR = "Enchanted: ";
+
 local ITEM_LEVEL_STRING = {};
 ITEM_LEVEL_STRING.enUS = "Item Level";
 ITEM_LEVEL_STRING.frFR = "Item Level";
@@ -183,6 +191,10 @@ end
 
 function CPUT.Constants:getSeasonString(locale)
     return SEASON_1[locale]
+end
+
+function CPUT.Constants:getEnchantedString(locale)
+    return ENCHANTED_STRING[locale]
 end
 
 function CPUT.Constants:getReshiiWraps(locale)
