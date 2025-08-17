@@ -121,19 +121,27 @@ function CPUT.settings:CreateBlizzOptions()
                 get = GetProfileOption,
                 set = SetProfileOption
             },
-            showOnInspect = {
-                order = 31,
+            showInfoBesideIcon = {
+                order = 32,
                 type = "toggle",
-                name = "Show on Inspect",
+                name = "Show info beside icon",
+                desc = "If checked the info will be shown beside the icon instead of on top",
+                get = GetProfileOption,
+                set = SetProfileOption
+            },
+            showOnInspect = {
+                order = 33,
+                type = "toggle",
+                name = "Show on inspect",
                 desc = "If checked the inspect panel will be enhanced",
                 get = GetProfileOption,
                 set = SetProfileOption
             },
-            showInfoBesideIcon = {
-                order = 31,
+            showAvgIlvlOnInspect = {
+                order = 34,
                 type = "toggle",
-                name = "Show info beside icon",
-                desc = "If checked the info will be shown beside the icon instead of on top",
+                name = "Show average item level on Inspect",
+                desc = "If checked the inspect panel will show the average item level",
                 get = GetProfileOption,
                 set = SetProfileOption
             }

@@ -107,6 +107,20 @@ function CPUT.CPUTUI:UpdateSlot(slot, slotData, unit)
     end
 end
 
+function CPUT.CPUTUI:ShowInspectItemLevel(itemLevel)
+
+    local slotFrame = _G["InspectHandsSlot"]
+
+    local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
+
+    overlayTexts.target.itemLevel = slotFrame:CreateFontString(nil, "OVERLAY")
+    overlayTexts.target.itemLevel:SetFont(font, 11, "OUTLINE, THICK")
+    overlayTexts.target.itemLevel:SetText("Item Level: \n" .. itemLevel)
+    overlayTexts.target.itemLevel:SetTextColor(100, 100, 100)
+    overlayTexts.target.itemLevel:SetPoint("BOTTOMRIGHT", slotFrame, "TOPRIGHT", 0, 5)
+
+end
+
 function CPUT.CPUTUI:ClearItemSlots()
     for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
         if (overlayTexts.player.il[slot]) then
@@ -126,4 +140,9 @@ function CPUT.CPUTUI:ClearItemSlots()
             overlayTexts.target.ut[slot] = nil
         end
     end
+    if (overlayTexts.target.itemLevel) then
+        overlayTexts.target.itemLevel:Hide()
+        overlayTexts.target.itemLevel = nil
+    end
+
 end

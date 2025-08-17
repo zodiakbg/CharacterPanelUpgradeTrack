@@ -33,4 +33,9 @@ function CPUT:UpdateInspectPanel()
     for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
         CPUT.CPUTUI:UpdateSlot(slot, slotData, "target")
     end
+    if CPUT.settings:GetSettingsValue("showAvgIlvlOnInspect") then
+        local avgItemLevel = C_PaperDollInfo.GetInspectItemLevel("target")
+        CPUT.CPUTUI:ShowInspectItemLevel(avgItemLevel)
+    end
+
 end
