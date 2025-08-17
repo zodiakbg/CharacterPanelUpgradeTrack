@@ -181,8 +181,8 @@ function CPUT.CPUTUI:ShowInspectItemLevel(itemLevel)
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
 
     overlayTexts.target.itemLevel = slotFrame:CreateFontString(nil, "OVERLAY")
-    overlayTexts.target.itemLevel:SetFont(font, 11, "OUTLINE, THICK")
-    overlayTexts.target.itemLevel:SetText("Item Level: \n" .. itemLevel)
+    overlayTexts.target.itemLevel:SetFont(font, 14, "OUTLINE, THICK")
+    overlayTexts.target.itemLevel:SetText("ILevel: \n" .. itemLevel)
     overlayTexts.target.itemLevel:SetTextColor(1, 1, 1)
     overlayTexts.target.itemLevel:SetPoint("BOTTOMRIGHT", slotFrame, "TOPRIGHT", 0, 5)
 
