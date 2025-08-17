@@ -31,6 +31,10 @@ function CPUT.CPUTUI:CreateUpgradeTrackTextOverlay(slotData, besideIcon, unit)
         parentFrame = _G["CPUT_" .. slotName .. "_BG"]
     end
 
+    if not parentFrame then
+        return
+    end
+
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("upgradeTrackFont"))
 
     overlayTexts[unit].ut[slotData.slot] = parentFrame:CreateFontString("CPUT_UT_" .. slotName, "OVERLAY")
@@ -65,6 +69,10 @@ function CPUT.CPUTUI:CreateItemLevelTextOverlay(slotData, besideIcon, unit)
     local parentFrame = _G[slotName]
     if (besideIcon) then
         parentFrame = _G["CPUT_" .. slotName .. "_BG"]
+    end
+
+    if not parentFrame then
+        return
     end
 
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
@@ -103,6 +111,18 @@ function CPUT.CPUTUI:CreateEnchantTextOverlay(slotData, besideIcon, unit)
         parentFrame = _G["CPUT_" .. slotName .. "_BG"]
     end
 
+    if not parentFrame then
+        return
+    end
+
+    if slotData.enchantedString then
+        local pipeIndex = string.find(slotData.enchantedString, "|", 1, true)
+        if pipeIndex then
+            slotData.enchantedString = string.sub(slotData.enchantedString, 1, pipeIndex - 1)
+        end
+        slotData.enchantedString = string.sub(slotData.enchantedString, 1, 15)
+    end
+
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
 
     overlayTexts[unit].enchants[slotData.slot] = parentFrame:CreateFontString("CPUT_EN_" .. slotName, "OVERLAY")
@@ -135,11 +155,6 @@ function CPUT.CPUTUI:UpdateSlot(slot, slotData, unit)
     end
 
     local besideIcon = false;
-
-    if not slotData then
-        return
-    end
-
     if CPUT.settings:GetSettingsValue("showInfoBesideIcon") then
         besideIcon = true;
     end
@@ -221,11 +236,6 @@ function setBackgroundSlot(slotData)
 
     if _G["CPUT_" .. slotName .. "_BG"] then
         return
-    end
-
-    local slotName = slotData.slotName
-    if (unit == "target") then
-        slotName = slotData.slotInspectName
     end
 
     local slotFrame = _G[slotName]

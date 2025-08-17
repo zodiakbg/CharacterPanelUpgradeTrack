@@ -16,6 +16,7 @@ function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
     slotData.slotName = CPUT.Constants:getEquipmentSlot(slotNumber).name
     slotData.slotInspectName = CPUT.Constants:getEquipmentSlot(slotNumber).inspectName
     slotData.besidePosition = CPUT.Constants:getEquipmentSlot(slotNumber).besidePosition
+    slotData.unit = unit
 
     local tooltipData = C_TooltipInfo.GetInventoryItem(unit, slotNumber)
     if not tooltipData then
