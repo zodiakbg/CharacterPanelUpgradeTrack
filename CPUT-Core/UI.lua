@@ -178,6 +178,10 @@ function CPUT.CPUTUI:ShowInspectItemLevel(itemLevel)
 
     local slotFrame = _G["InspectHandsSlot"]
 
+    if not slotFrame then
+        return
+    end
+
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
 
     overlayTexts.target.itemLevel = slotFrame:CreateFontString(nil, "OVERLAY")
