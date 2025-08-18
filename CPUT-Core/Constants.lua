@@ -123,6 +123,14 @@ RESHII_WRAPS.esES = "Reshii Wraps";
 RESHII_WRAPS.itIT = "Reshii Wraps";
 RESHII_WRAPS.ptBR = "Reshii Wraps";
 
+local DISC = {};
+DISC.enUS = "Durable Information Securing Container";
+DISC.frFR = "Durable Information Securing Container";
+DISC.deDE = "Durable Information Securing Container";
+DISC.esES = "Durable Information Securing Container";
+DISC.itIT = "Durable Information Securing Container";
+DISC.ptBR = "Durable Information Securing Container";
+
 local UPGRADE_TRACKS = {}
 UPGRADE_TRACKS.enUS = {
     ["Explorer"] = "Exp",
@@ -197,8 +205,12 @@ function CPUT.Constants:getEnchantedString(locale)
     return ENCHANTED_STRING[locale]
 end
 
-function CPUT.Constants:getReshiiWraps(locale)
+function CPUT.Constants:getReshiiWrapsString(locale)
     return RESHII_WRAPS[locale]
+end
+
+function CPUT.Constants:getDiscString(locale)
+    return DISC[locale]
 end
 
 function CPUT.Constants:getUpgradeTrackAbbr(locale, track)

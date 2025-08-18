@@ -36,7 +36,13 @@ function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
     slotData.lsString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getSeasonString(locale)))
 
     -- get reshii wraps string
-    slotData.rwString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getReshiiWraps(locale), true))
+    slotData.rwString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getReshiiWrapsString(locale), true))
+
+    -- get DISC string
+    slotData.dsString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getDiscString(locale), true))
+    if slotData.dsString then
+        slotData.dsString = "DISC"
+    end
 
     -- get enchanted string
     slotData.enchantedString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getEnchantedString(locale)))
@@ -47,18 +53,21 @@ function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
         b = tooltipData.lines[1].leftColor.b
     }
 
+    if slotData.utString == nil and slotData.rwString ~= nil then
+        slotData.utString = slotData.rwString:match("^(.-) ")
+    end
+    if slotData.utString == nil and slotData.dsString ~= nil then
+        slotData.utString = slotData.dsString
+    end
+
     if CPUT.settings:GetSettingsValue("grayOutPrevSeasons") then
-        if slotData.lsString or (slotData.utString == nil and slotData.rwString == nil) then
+        if slotData.lsString or slotData.utString == nil then
             slotData.color = {
                 r = 0.5,
                 g = 0.5,
                 b = 0.5
             }
         end
-    end
-
-    if slotData.utString == nil and slotData.rwString ~= nil then
-        slotData.utString = slotData.rwString:match("^(.-) ")
     end
 
     return slotData
