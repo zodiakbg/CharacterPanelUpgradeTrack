@@ -2,22 +2,86 @@ CPUT.Constants = CPUT:NewModule("Constants")
 
 local slots = {}
 
-slots[1] = "CharacterHeadSlot"
-slots[2] = "CharacterNeckSlot"
-slots[3] = "CharacterShoulderSlot"
-slots[5] = "CharacterChestSlot"
-slots[6] = "CharacterWaistSlot"
-slots[7] = "CharacterLegsSlot"
-slots[8] = "CharacterFeetSlot"
-slots[9] = "CharacterWristSlot"
-slots[10] = "CharacterHandsSlot"
-slots[11] = "CharacterFinger0Slot"
-slots[12] = "CharacterFinger1Slot"
-slots[13] = "CharacterTrinket0Slot"
-slots[14] = "CharacterTrinket1Slot"
-slots[15] = "CharacterBackSlot"
-slots[16] = "CharacterMainHandSlot"
-slots[17] = "CharacterSecondaryHandSlot"
+slots[1] = {
+    name = "CharacterHeadSlot",
+    inspectName = "InspectHeadSlot",
+    besidePosition = "right"
+}
+slots[2] = {
+    name = "CharacterNeckSlot",
+    inspectName = "InspectNeckSlot",
+    besidePosition = "right"
+}
+slots[3] = {
+    name = "CharacterShoulderSlot",
+    inspectName = "InspectShoulderSlot",
+    besidePosition = "right"
+}
+slots[5] = {
+    name = "CharacterChestSlot",
+    inspectName = "InspectChestSlot",
+    besidePosition = "right"
+}
+slots[6] = {
+    name = "CharacterWaistSlot",
+    inspectName = "InspectWaistSlot",
+    besidePosition = "left"
+}
+slots[7] = {
+    name = "CharacterLegsSlot",
+    inspectName = "InspectLegsSlot",
+    besidePosition = "left"
+}
+slots[8] = {
+    name = "CharacterFeetSlot",
+    inspectName = "InspectFeetSlot",
+    besidePosition = "left"
+}
+slots[9] = {
+    name = "CharacterWristSlot",
+    inspectName = "InspectWristSlot",
+    besidePosition = "right"
+}
+slots[10] = {
+    name = "CharacterHandsSlot",
+    inspectName = "InspectHandsSlot",
+    besidePosition = "left"
+}
+slots[11] = {
+    name = "CharacterFinger0Slot",
+    inspectName = "InspectFinger0Slot",
+    besidePosition = "left"
+}
+slots[12] = {
+    name = "CharacterFinger1Slot",
+    inspectName = "InspectFinger1Slot",
+    besidePosition = "left"
+}
+slots[13] = {
+    name = "CharacterTrinket0Slot",
+    inspectName = "InspectTrinket0Slot",
+    besidePosition = "left"
+}
+slots[14] = {
+    name = "CharacterTrinket1Slot",
+    inspectName = "InspectTrinket1Slot",
+    besidePosition = "left"
+}
+slots[15] = {
+    name = "CharacterBackSlot",
+    inspectName = "InspectBackSlot",
+    besidePosition = "right"
+}
+slots[16] = {
+    name = "CharacterMainHandSlot",
+    inspectName = "InspectMainHandSlot",
+    besidePosition = "left"
+}
+slots[17] = {
+    name = "CharacterSecondaryHandSlot",
+    inspectName = "InspectSecondaryHandSlot",
+    besidePosition = "right"
+}
 
 local UPGRADE_LEVEL_STRING = {};
 UPGRADE_LEVEL_STRING.enUS = "Upgrade Level: ";
@@ -27,6 +91,14 @@ UPGRADE_LEVEL_STRING.deDE = "Stufe aufwerten: ";
 UPGRADE_LEVEL_STRING.esES = "Nivel de mejora: ";
 UPGRADE_LEVEL_STRING.itIT = "Livello di potenziamento: ";
 UPGRADE_LEVEL_STRING.ptBR = "Nível de aprimoramento: ";
+
+local ENCHANTED_STRING = {};
+ENCHANTED_STRING.enUS = "Enchanted: ";
+ENCHANTED_STRING.frFR = "Enchanted: ";
+ENCHANTED_STRING.deDE = "Enchanted: ";
+ENCHANTED_STRING.esES = "Enchanted: ";
+ENCHANTED_STRING.itIT = "Enchanted: ";
+ENCHANTED_STRING.ptBR = "Enchanted: ";
 
 local ITEM_LEVEL_STRING = {};
 ITEM_LEVEL_STRING.enUS = "Item Level";
@@ -54,6 +126,14 @@ RESHII_WRAPS.deDE = "Reshii Wraps";
 RESHII_WRAPS.esES = "Reshii Wraps";
 RESHII_WRAPS.itIT = "Reshii Wraps";
 RESHII_WRAPS.ptBR = "Reshii Wraps";
+
+local DISC = {};
+DISC.enUS = "Durable Information Securing Container";
+DISC.frFR = "Durable Information Securing Container";
+DISC.deDE = "Durable Information Securing Container";
+DISC.esES = "Durable Information Securing Container";
+DISC.itIT = "Durable Information Securing Container";
+DISC.ptBR = "Durable Information Securing Container";
 
 local UPGRADE_TRACKS = {}
 UPGRADE_TRACKS.enUS = {
@@ -135,8 +215,16 @@ function CPUT.Constants:getSeasonString(locale)
     return SEASON_1[locale]
 end
 
-function CPUT.Constants:getReshiiWraps(locale)
+function CPUT.Constants:getEnchantedString(locale)
+    return ENCHANTED_STRING[locale]
+end
+
+function CPUT.Constants:getReshiiWrapsString(locale)
     return RESHII_WRAPS[locale]
+end
+
+function CPUT.Constants:getDiscString(locale)
+    return DISC[locale]
 end
 
 function CPUT.Constants:getUpgradeTrackAbbr(locale, track)

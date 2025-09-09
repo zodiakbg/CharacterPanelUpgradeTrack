@@ -120,7 +120,40 @@ function CPUT.settings:CreateBlizzOptions()
                 desc = "If checked all items that do not upgrade track will be will be grayed out",
                 get = GetProfileOption,
                 set = SetProfileOption
+            },
+            showInfoBesideIcon = {
+                order = 32,
+                type = "toggle",
+                name = "Show info beside icon",
+                desc = "If checked the info will be shown beside the icon instead of on top",
+                get = GetProfileOption,
+                set = SetProfileOption
+            },
+            showEnchants = {
+                order = 33,
+                type = "toggle",
+                name = "Show enchants",
+                desc = "If checked the enchant info will be shown",
+                get = GetProfileOption,
+                set = SetProfileOption
+            },
+            showOnInspect = {
+                order = 34,
+                type = "toggle",
+                name = "Show on inspect",
+                desc = "If checked the inspect panel will be enhanced",
+                get = GetProfileOption,
+                set = SetProfileOption
+            },
+            showAvgIlvlOnInspect = {
+                order = 35,
+                type = "toggle",
+                name = "Show average item level on Inspect",
+                desc = "If checked the inspect panel will show the average item level",
+                get = GetProfileOption,
+                set = SetProfileOption
             }
+
         }
 
     }
