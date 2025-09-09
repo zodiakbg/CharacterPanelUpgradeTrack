@@ -1,10 +1,10 @@
 Simple addon that displays the upgrade track of the items in the character panel.
-    Explorer -> Exp
-    Adventurer -> Adv
-    Veteran -> Vet
-    Champion -> Cha
-    Hero -> Hero
-    Myth -> Myth
+- Explorer -> Exp
+- Adventurer -> Adv
+- Veteran -> Vet
+- Champion -> Cha
+- Hero -> Hero
+- Myth -> Myth
 
 No config options available. Just install and enable.
 
