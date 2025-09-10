@@ -6,7 +6,6 @@ Simple addon that displays the upgrade track of the items in the character panel
 - Hero -> Hero
 - Myth -> Myth
 
-No config options available. Just install and enable.
 
 Supports localized game clients. 
 
