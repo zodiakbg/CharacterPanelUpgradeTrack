@@ -4,13 +4,13 @@ local LSM = LibStub("LibSharedMedia-3.0")
 
 local overlayTexts = {}
 overlayTexts.player = {}
-overlayTexts.target = {}
+overlayTexts.inspect = {}
 overlayTexts.player.ut = {}
 overlayTexts.player.il = {}
 overlayTexts.player.enchants = {}
-overlayTexts.target.ut = {}
-overlayTexts.target.il = {}
-overlayTexts.target.enchants = {}
+overlayTexts.inspect.ut = {}
+overlayTexts.inspect.il = {}
+overlayTexts.inspect.enchants = {}
 
 local UT_STRING_Y_OFFSET = -3
 local IL_STRING_Y_OFFSET = -13
@@ -21,9 +21,16 @@ local RIGHT_STRING_X_OFFSET = 3
 
 function CPUT.CPUTUI:CreateUpgradeTrackTextOverlay(slotData, besideIcon, unit)
 
+    local overlayTextsId = "player"
     local slotName = slotData.slotName
-    if (unit == "target") then
+
+    if (unit ~= "player") then
+        overlayTextsId = "inspect"
         slotName = slotData.slotInspectName
+    end
+
+    if not slotName then
+        return
     end
 
     local parentFrame = _G[slotName]
@@ -37,33 +44,36 @@ function CPUT.CPUTUI:CreateUpgradeTrackTextOverlay(slotData, besideIcon, unit)
 
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("upgradeTrackFont"))
 
-    overlayTexts[unit].ut[slotData.slot] = parentFrame:CreateFontString("CPUT_UT_" .. slotName, "OVERLAY")
-    overlayTexts[unit].ut[slotData.slot]:SetFont(font, 11, "OUTLINE, THICK")
-    overlayTexts[unit].ut[slotData.slot]:SetText(slotData.utString)
-    overlayTexts[unit].ut[slotData.slot]:SetTextColor(slotData.color.r, slotData.color.g, slotData.color.b)
+    overlayTexts[overlayTextsId].ut[slotData.slot] = parentFrame:CreateFontString("CPUT_UT_" .. slotName, "OVERLAY")
+    overlayTexts[overlayTextsId].ut[slotData.slot]:SetFont(font, 11, "OUTLINE, THICK")
+    overlayTexts[overlayTextsId].ut[slotData.slot]:SetText(slotData.utString)
+    overlayTexts[overlayTextsId].ut[slotData.slot]:SetTextColor(slotData.color.r, slotData.color.g, slotData.color.b)
 
     -- position string on top of icon
     if not besideIcon then
-        overlayTexts[unit].ut[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", 0, UT_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].ut[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", 0,
+            UT_STRING_Y_OFFSET)
         return
     end
 
     -- position string beside icon
     if slotData.besidePosition == "left" then
-        overlayTexts[unit].ut[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", LEFT_STRING_X_OFFSET,
-            UT_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].ut[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT",
+            LEFT_STRING_X_OFFSET, UT_STRING_Y_OFFSET)
     else
-        overlayTexts[unit].ut[slotData.slot]:SetPoint("TOPLEFT", parentFrame, "TOPLEFT", RIGHT_STRING_X_OFFSET,
-            UT_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].ut[slotData.slot]:SetPoint("TOPLEFT", parentFrame, "TOPLEFT",
+            RIGHT_STRING_X_OFFSET, UT_STRING_Y_OFFSET)
     end
 
 end
 
 function CPUT.CPUTUI:CreateItemLevelTextOverlay(slotData, besideIcon, unit)
 
+    local overlayTextsId = "player"
     local slotName = slotData.slotName
-    if (unit == "target") then
+    if (unit ~= "player") then
         slotName = slotData.slotInspectName
+        overlayTextsId = "inspect"
     end
 
     local parentFrame = _G[slotName]
@@ -77,33 +87,35 @@ function CPUT.CPUTUI:CreateItemLevelTextOverlay(slotData, besideIcon, unit)
 
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
 
-    overlayTexts[unit].il[slotData.slot] = parentFrame:CreateFontString("CPUT_IL_" .. slotName, "OVERLAY")
-    overlayTexts[unit].il[slotData.slot]:SetFont(font, 11, "OUTLINE, THICK")
-    overlayTexts[unit].il[slotData.slot]:SetText(slotData.ilString)
-    overlayTexts[unit].il[slotData.slot]:SetTextColor(slotData.color.r, slotData.color.g, slotData.color.b)
+    overlayTexts[overlayTextsId].il[slotData.slot] = parentFrame:CreateFontString("CPUT_IL_" .. slotName, "OVERLAY")
+    overlayTexts[overlayTextsId].il[slotData.slot]:SetFont(font, 11, "OUTLINE, THICK")
+    overlayTexts[overlayTextsId].il[slotData.slot]:SetText(slotData.ilString)
+    overlayTexts[overlayTextsId].il[slotData.slot]:SetTextColor(slotData.color.r, slotData.color.g, slotData.color.b)
 
     -- position string on top of icon
     if not besideIcon then
-        overlayTexts[unit].il[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", 0, IL_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].il[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", 0,
+            IL_STRING_Y_OFFSET)
         return
     end
 
     -- position string beside icon
     if slotData.besidePosition == "left" then
-        overlayTexts[unit].il[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", LEFT_STRING_X_OFFSET,
-            IL_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].il[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT",
+            LEFT_STRING_X_OFFSET, IL_STRING_Y_OFFSET)
     else
-        overlayTexts[unit].il[slotData.slot]:SetPoint("TOPLEFT", parentFrame, "TOPLEFT", RIGHT_STRING_X_OFFSET,
-            IL_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].il[slotData.slot]:SetPoint("TOPLEFT", parentFrame, "TOPLEFT",
+            RIGHT_STRING_X_OFFSET, IL_STRING_Y_OFFSET)
     end
 
 end
 
 function CPUT.CPUTUI:CreateEnchantTextOverlay(slotData, besideIcon, unit)
-
+    local overlayTextsId = "player"
     local slotName = slotData.slotName
-    if (unit == "target") then
+    if (unit ~= "player") then
         slotName = slotData.slotInspectName
+        overlayTextsId = "inspect"
     end
 
     local parentFrame = _G[slotName]
@@ -125,24 +137,27 @@ function CPUT.CPUTUI:CreateEnchantTextOverlay(slotData, besideIcon, unit)
 
     local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
 
-    overlayTexts[unit].enchants[slotData.slot] = parentFrame:CreateFontString("CPUT_EN_" .. slotName, "OVERLAY")
-    overlayTexts[unit].enchants[slotData.slot]:SetFont(font, 11, "OUTLINE, THICK")
-    overlayTexts[unit].enchants[slotData.slot]:SetText(slotData.enchantedString)
-    overlayTexts[unit].enchants[slotData.slot]:SetTextColor(slotData.color.r, slotData.color.g, slotData.color.b)
+    overlayTexts[overlayTextsId].enchants[slotData.slot] = parentFrame:CreateFontString("CPUT_EN_" .. slotName,
+        "OVERLAY")
+    overlayTexts[overlayTextsId].enchants[slotData.slot]:SetFont(font, 11, "OUTLINE, THICK")
+    overlayTexts[overlayTextsId].enchants[slotData.slot]:SetText(slotData.enchantedString)
+    overlayTexts[overlayTextsId].enchants[slotData.slot]:SetTextColor(slotData.color.r, slotData.color.g,
+        slotData.color.b)
 
     -- position string on top of icon
     if not besideIcon then
-        overlayTexts[unit].enchants[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", 0, EN_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].enchants[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", 0,
+            EN_STRING_Y_OFFSET)
         return
     end
 
     -- position string beside icon
     if slotData.besidePosition == "left" then
-        overlayTexts[unit].enchants[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT", LEFT_STRING_X_OFFSET,
-            EN_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].enchants[slotData.slot]:SetPoint("TOPRIGHT", parentFrame, "TOPRIGHT",
+            LEFT_STRING_X_OFFSET, EN_STRING_Y_OFFSET)
     else
-        overlayTexts[unit].enchants[slotData.slot]:SetPoint("TOPLEFT", parentFrame, "TOPLEFT", RIGHT_STRING_X_OFFSET,
-            EN_STRING_Y_OFFSET)
+        overlayTexts[overlayTextsId].enchants[slotData.slot]:SetPoint("TOPLEFT", parentFrame, "TOPLEFT",
+            RIGHT_STRING_X_OFFSET, EN_STRING_Y_OFFSET)
     end
 
 end
@@ -176,23 +191,24 @@ end
 
 function CPUT.CPUTUI:ShowInspectItemLevel(itemLevel)
 
-    if not overlayTexts.target.itemLevel then
+    if not overlayTexts.inspect.itemLevel then
 
         local slotFrame = _G["InspectHandsSlot"]
         if not slotFrame then
             return
         end
         local font = LSM:Fetch("font", CPUT.settings:GetSettingsValue("itemLevelFont"))
-        overlayTexts.target.itemLevel = slotFrame:CreateFontString(nil, "OVERLAY")
-        overlayTexts.target.itemLevel:SetFont(font, 14, "OUTLINE, THICK")
-        overlayTexts.target.itemLevel:SetTextColor(1, 1, 1)
-        overlayTexts.target.itemLevel:SetPoint("BOTTOMRIGHT", slotFrame, "TOPRIGHT", 0, 5)
+        overlayTexts.inspect.itemLevel = slotFrame:CreateFontString(nil, "OVERLAY")
+        overlayTexts.inspect.itemLevel:SetFont(font, 14, "OUTLINE, THICK")
+        overlayTexts.inspect.itemLevel:SetTextColor(1, 1, 1)
+        overlayTexts.inspect.itemLevel:SetPoint("BOTTOMRIGHT", slotFrame, "TOPRIGHT", 0, 5)
     end
-    overlayTexts.target.itemLevel:SetText("ILevel: \n" .. itemLevel)
+    overlayTexts.inspect.itemLevel:SetText("ILevel: \n" .. itemLevel)
 
 end
 
 function CPUT.CPUTUI:ClearItemSlots(unit)
+
     for slot, _ in pairs(CPUT.Constants:getEquipmentSlots()) do
         if (unit == "player") then
             if (overlayTexts.player.ut[slot]) then
@@ -208,33 +224,34 @@ function CPUT.CPUTUI:ClearItemSlots(unit)
                 overlayTexts.player.enchants[slot] = nil
             end
         end
-        if (unit == "target") then
-            if (overlayTexts.target.il[slot]) then
-                overlayTexts.target.il[slot]:Hide()
-                overlayTexts.target.il[slot] = nil
+        if (unit ~= "player") then
+            if (overlayTexts.inspect.il[slot]) then
+                overlayTexts.inspect.il[slot]:Hide()
+                overlayTexts.inspect.il[slot] = nil
             end
-            if (overlayTexts.target.ut[slot]) then
-                overlayTexts.target.ut[slot]:Hide()
-                overlayTexts.target.ut[slot] = nil
+            if (overlayTexts.inspect.ut[slot]) then
+                overlayTexts.inspect.ut[slot]:Hide()
+                overlayTexts.inspect.ut[slot] = nil
             end
-            if (overlayTexts.target.enchants[slot]) then
-                overlayTexts.target.enchants[slot]:Hide()
-                overlayTexts.target.enchants[slot] = nil
+            if (overlayTexts.inspect.enchants[slot]) then
+                overlayTexts.inspect.enchants[slot]:Hide()
+                overlayTexts.inspect.enchants[slot] = nil
             end
         end
     end
-    if (unit == "target") then
-        if (overlayTexts.target.itemLevel) then
-            overlayTexts.target.itemLevel:Hide()
-            overlayTexts.target.itemLevel = nil
+    if (unit ~= "player") then
+        if (overlayTexts.inspect.itemLevel) then
+            overlayTexts.inspect.itemLevel:Hide()
+            overlayTexts.inspect.itemLevel = nil
         end
     end
 
 end
 
 function setBackgroundSlot(slotData)
+
     local slotName = slotData.slotName
-    if (slotData.unit == "target") then
+    if (slotData.unit ~= "player") then
         slotName = slotData.slotInspectName
     end
 
