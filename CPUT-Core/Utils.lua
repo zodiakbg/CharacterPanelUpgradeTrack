@@ -1,15 +1,15 @@
-CPUT.CPUTUtils = CPUT:NewModule("CPUTUtils")
+CPUT.Utils = CPUT:NewModule("CPUTUtils")
 
 local locale = GetLocale();
 if not locale then
     locale = "enUS"
 end
 
-function CPUT.CPUTUtils:ContainsString(str, substr)
+function CPUT.Utils:ContainsString(str, substr)
     return string.find(str, substr) ~= nil
 end
 
-function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
+function CPUT.Utils:FetchItemSlotData(slotNumber, unit)
 
     local slotData = {}
     slotData.slot = slotNumber
@@ -17,6 +17,9 @@ function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
     slotData.slotInspectName = CPUT.Constants:getEquipmentSlot(slotNumber).inspectName
     slotData.besidePosition = CPUT.Constants:getEquipmentSlot(slotNumber).besidePosition
     slotData.unit = unit
+    if not unit then
+        return
+    end
 
     local tooltipData = C_TooltipInfo.GetInventoryItem(unit, slotNumber)
     if not tooltipData then
@@ -73,7 +76,7 @@ function CPUT.CPUTUtils:FetchItemSlotData(slotNumber, unit)
     return slotData
 end
 
-function CPUT.CPUTUtils:GetTooltipString(tooltipData, str, fullString)
+function CPUT.Utils:GetTooltipString(tooltipData, str, fullString)
     local line = self:findLine(tooltipData.lines, str)
     if not line then
         return
@@ -84,7 +87,7 @@ function CPUT.CPUTUtils:GetTooltipString(tooltipData, str, fullString)
     return string.gsub(line.leftText, str, "")
 end
 
-function CPUT.CPUTUtils:findLine(lines, str)
+function CPUT.Utils:findLine(lines, str)
     for _, line in ipairs(lines) do
         if line.leftText and string.find(line.leftText, str) then
             return line
@@ -93,9 +96,47 @@ function CPUT.CPUTUtils:findLine(lines, str)
     return nil
 end
 
-function CPUT.CPUTUtils:trim(s)
+function CPUT.Utils:trim(s)
     if not s then
         return s
     end
     return s:match("^%s*(.-)%s*$")
+end
+
+local function tableToString(tbl, indent)
+    indent = indent or 0
+    local toprint = string.rep("  ", indent) .. "{\n"
+    indent = indent + 1
+    for k, v in pairs(tbl) do
+        toprint = toprint .. string.rep("  ", indent)
+        if type(k) == "string" then
+            toprint = toprint .. '["' .. k .. '"] = '
+        else
+            toprint = toprint .. "[" .. tostring(k) .. "] = "
+        end
+        if type(v) == "table" then
+            toprint = toprint .. tableToString(v, indent) .. ",\n"
+        elseif type(v) == "string" then
+            toprint = toprint .. '"' .. v .. '",\n'
+        else
+            toprint = toprint .. tostring(v) .. ",\n"
+        end
+    end
+    indent = indent - 1
+    toprint = toprint .. string.rep("  ", indent) .. "}"
+    return toprint
+end
+
+function CPUT.Utils:debug(...)
+    if false then -- disable debug messages
+        local args = {...}
+        for i, msg in ipairs(args) do
+            if type(msg) == "table" then
+                print("CPUT Debug table:")
+                print(tableToString(msg))
+            else
+                print("CPUT Debug:", msg)
+            end
+        end
+    end
 end

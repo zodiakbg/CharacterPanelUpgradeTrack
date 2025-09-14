@@ -148,7 +148,7 @@ function CPUT.CPUTUI:CreateEnchantTextOverlay(slotData, besideIcon, unit)
 end
 
 function CPUT.CPUTUI:UpdateSlot(slot, slotData, unit)
-    local slotData = CPUT.CPUTUtils:FetchItemSlotData(slot, unit)
+    local slotData = CPUT.Utils:FetchItemSlotData(slot, unit)
 
     if not slotData then
         return
