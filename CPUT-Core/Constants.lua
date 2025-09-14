@@ -129,11 +129,24 @@ RESHII_WRAPS.ptBR = "Reshii Wraps";
 
 local DISC = {};
 DISC.enUS = "Durable Information Securing Container";
+DISC.koKR = "Durable Information Securing Container";
 DISC.frFR = "Durable Information Securing Container";
 DISC.deDE = "Durable Information Securing Container";
 DISC.esES = "Durable Information Securing Container";
 DISC.itIT = "Durable Information Securing Container";
 DISC.ptBR = "Durable Information Securing Container";
+
+local QUALITY = {};
+QUALITY.enUS = "Quality:";
+QUALITY.koKR = "Quality:";
+QUALITY.frFR = "Quality:";
+QUALITY.deDE = "Quality:";
+QUALITY.esES = "Quality:";
+QUALITY.itIT = "Quality:";
+QUALITY.ptBR = "Quality:";
+
+
+
 
 local UPGRADE_TRACKS = {}
 UPGRADE_TRACKS.enUS = {
@@ -226,6 +239,11 @@ end
 function CPUT.Constants:getDiscString(locale)
     return DISC[locale]
 end
+
+function CPUT.Constants:getQualityString(locale)
+    return QUALITY[locale]
+end
+
 
 function CPUT.Constants:getUpgradeTrackAbbr(locale, track)
     return UPGRADE_TRACKS[locale][track]

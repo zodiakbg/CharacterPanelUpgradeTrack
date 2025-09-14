@@ -38,6 +38,14 @@ function CPUT.Utils:FetchItemSlotData(slotNumber, unit)
     -- get last season string
     slotData.lsString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getSeasonString(locale)))
 
+    -- get made by string
+    slotData.qualityIcon = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getQualityString(locale)))
+
+    if slotData.qualityIcon then
+        slotData.qualityIcon = string.gsub(slotData.qualityIcon, "Quality:", "")
+        slotData.qualityIcon = string.gsub(slotData.qualityIcon, ":%d%d:%d%d:", ":10:10:") .. " craft"
+    end
+
     -- get reshii wraps string
     slotData.rwString = self:trim(self:GetTooltipString(tooltipData, CPUT.Constants:getReshiiWrapsString(locale), true))
 
@@ -61,6 +69,9 @@ function CPUT.Utils:FetchItemSlotData(slotNumber, unit)
     end
     if slotData.utString == nil and slotData.dsString ~= nil then
         slotData.utString = slotData.dsString
+    end
+    if slotData.utString == nil and slotData.qualityIcon ~= nil then
+        slotData.utString = slotData.qualityIcon
     end
 
     if CPUT.settings:GetSettingsValue("grayOutPrevSeasons") then
