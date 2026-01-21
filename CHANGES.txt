@@ -1,0 +1,24 @@
+lightweight tag 73f66cc9d146ab6adb787e5aba4ae69a4e372578 2.1.3
+Author:	GitHub <noreply@github.com>
+Date:	Sun Sep 14 13:49:15 2025 +0300
+
+commit 73f66cc9d146ab6adb787e5aba4ae69a4e372578
+Author: alexanderstoev <alex.stoev@gmail.com>
+Date:   Sun Sep 14 13:49:15 2025 +0300
+
+    Bump addon version
+    
+    Bump
+
+commit 834adc7b4386b30d7b1989a235bbc652af292ff4
+Author: Alex Stoev <alex.stoev@gmail.com>
+Date:   Sun Sep 14 13:48:01 2025 +0300
+
+    Fixed Crafted gear
+
+commit 834adc7b4386b30d7b1989a235bbc652af292ff4
+Author: Alex Stoev <alex.stoev@gmail.com>
+Date:   Sun Sep 14 13:48:01 2025 +0300
+
+    Fixed Crafted gear
+
